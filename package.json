@@ -5,6 +5,7 @@
   "repository": {
     "url": "https://github.com/miggynowiggy/restofinder"
   },
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
