@@ -17,7 +17,6 @@ import { useGlobalStore } from "../context";
 import { TLatLng, TResto } from "../typings";
 import useRestaurants from "../hooks/useRestaurants";
 import LoadingComponent from "./LoadingComponent";
-import { MAP_CENTER } from "../constants";
 
 export default function SelectedResto() {
   const { selectedResto, setResto, setDestination, setCurrentLocation } =
@@ -44,9 +43,6 @@ export default function SelectedResto() {
     if (selectedResto) {
       setDestination(selectedResto?.geometry?.location as TLatLng);
     }
-
-    const loc = new google.maps.LatLng(MAP_CENTER.lat, MAP_CENTER.lng);
-    setCurrentLocation(loc);
   }, []);
 
   useEffect(() => {
@@ -64,14 +60,11 @@ export default function SelectedResto() {
     }
 
     if (geolocation.latitude && geolocation.longitude) {
-      //UNCOMMENT ON PROD
-      // const loc = new google.maps.LatLng(
-      //   geolocation.latitude as number,
-      //   geolocation.longitude as number
-      // );
-      //setCurrentLocation(loc);
-      // REMOVE ON PROD
-      // temp set
+      const loc = new google.maps.LatLng(
+        geolocation.latitude as number,
+        geolocation.longitude as number
+      );
+      setCurrentLocation(loc);
     }
   }, [geolocation]);
 
