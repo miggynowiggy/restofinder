@@ -12,11 +12,7 @@ export default function MapCard({ place, onClose }: IMapCardProps) {
   }
 
   return (
-    <InfoWindow
-      position={place?.geometry?.location}
-      onCloseClick={onClose}
-      anchor={place?.geometry?.location}
-    >
+    <InfoWindow position={place?.geometry?.location} onCloseClick={onClose}>
       <Card
         hoverable
         bordered

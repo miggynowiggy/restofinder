@@ -4,7 +4,6 @@ import RestoCard from "./RestoCard";
 import { useGlobalStore } from "../context";
 import { useCallback, useEffect, useState } from "react";
 import { TLatLng, TResto } from "../typings";
-import { isLocInCircle } from "../utils/maps";
 
 interface ISideNavProps {
   isLoading: boolean;
