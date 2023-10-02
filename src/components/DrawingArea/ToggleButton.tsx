@@ -1,54 +1,52 @@
-import { Button } from "antd"
+import {
+  CloseOutlined,
+  DeleteOutlined,
+  PlusCircleOutlined,
+  PlusSquareOutlined
+} from "@ant-design/icons";
+import { FloatButton, Tooltip } from "antd";
 
 interface IToggleButtonProps {
-  showDraw: boolean
-  circle: google.maps.Circle | null
-  rectangle: google.maps.Rectangle | null
-  toggleDrawing: () => void
-  clearDrawing: () => void
+  showDraw: boolean;
+  isDrawn: boolean;
+  setShape: (shape: string) => void;
+  toggleDrawing: () => void;
+  clearDrawing: () => void;
 }
 
-export default function ToggleButton({ 
-  showDraw, 
-  circle, 
-  rectangle, 
-  toggleDrawing, 
+export default function ToggleButton({
+  showDraw,
+  isDrawn,
+  setShape,
+  toggleDrawing,
   clearDrawing
 }: IToggleButtonProps) {
-  if (!showDraw) {
-    return (
-      <Button 
-        size="large"
-        onClick={toggleDrawing}
-        style={{ position: 'fixed', top: 5, right: '40vw'}}
-      >
-        Draw Vicinity!
-      </Button>
-    )
-  } 
-  else if (showDraw && (circle || rectangle)) {
-    return (
-      <Button 
-        color="primary" 
-        onClick={clearDrawing}
-        style={{ position: 'fixed', top: 5, right: '36vw'}}
-      >
-        Remove Shape
-      </Button>
-    )
-  }
-  else if (showDraw && (!circle || !rectangle)) {
-    return (
-      <Button 
-        color="primary" 
-        onClick={toggleDrawing}
-        style={{ position: 'fixed', top: 5, right: '36vw'}}
-      >
-        Cancel Drawing
-      </Button>
-    )
-  } 
-  else {
-    return null
-  }
+  if (!showDraw) return null;
+
+  return (
+    <>
+      <FloatButton.Group shape="square" style={{ right: 10, bottom: 200 }}>
+        <Tooltip placement="left" title="Draw Circle">
+          <FloatButton
+            icon={<PlusCircleOutlined />}
+            onClick={() => setShape("circle")}
+          />
+        </Tooltip>
+        <Tooltip placement="left" title="Draw Rectangle">
+          <FloatButton
+            icon={<PlusSquareOutlined />}
+            onClick={() => setShape("rectangle")}
+          />
+        </Tooltip>
+        {isDrawn && (
+          <Tooltip placement="left" title="Clear Drawing">
+            <FloatButton icon={<DeleteOutlined />} onClick={clearDrawing} />
+          </Tooltip>
+        )}
+        <Tooltip placement="left" title="Cancel Drawing">
+          <FloatButton icon={<CloseOutlined />} onClick={toggleDrawing} />
+        </Tooltip>
+      </FloatButton.Group>
+    </>
+  );
 }

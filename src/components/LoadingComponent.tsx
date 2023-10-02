@@ -1,9 +1,9 @@
-import { Space, Spin } from "antd"
+import { Spin } from "antd";
 
-export default function LoadingComponent () {
+export default function LoadingComponent() {
   return (
-    <Space direction="vertical" style={{ width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyItems: 'center' }}>
+    <div className="flex items-center justify-center w-full h-full p-5">
       <Spin size="large" />
-    </Space>
-  )
+    </div>
+  );
 }

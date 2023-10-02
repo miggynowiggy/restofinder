@@ -1,0 +1,13 @@
+{
+  "arrowParens": "always",
+  "printWidth": 80,
+  "bracketSpacing": true,
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "none",
+  "useTabs": false,
+  "tabWidth": 2,
+  "importOrder": ["^components/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

@@ -1,10 +1,14 @@
-const theme = {
+import { ThemeConfig } from "antd";
+const theme: ThemeConfig = {
   token: {
     // Seed Token
-    colorPrimary: "#00b96b",
-    // Alias Token
-    colorBgContainer: "#f6ffed",
+    colorPrimary: "#14b8a6"
   },
+  components: {
+    Typography: {
+      colorText: "#fff"
+    }
+  }
 };
 
-export default theme
+export default theme;
