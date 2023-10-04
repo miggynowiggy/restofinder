@@ -76,6 +76,8 @@ export default function SideNav({ items, isLoading }: ISideNavProps) {
         }
       }
       setItems(Array.from(withinRange));
+    } else {
+      setItems(Array.from(items));
     }
   }, [circle, rectangle, items]);
 
